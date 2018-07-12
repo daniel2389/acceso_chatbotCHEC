@@ -1,0 +1,10 @@
+{
+    "name": "sala/acceso_chatbot-chec",
+    "authors": [
+        {
+            "name": "daniel cardona",
+            "email": "prjchec.dcardona@umanizales.edu.co"
+        }
+    ],
+    "require": {}
+}
