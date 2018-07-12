@@ -1,6 +1,6 @@
 <?php
 $dbname = "heroku_69tb2th4";
-
+date_default_timezone_set('America/Bogota');
 function executeQuery($con, $sql)
 {
     $result = $con->query($sql);
@@ -20,7 +20,6 @@ function logQuery($con, $usr, $pwd)
     $sql = "select idusuario, nombre from usuario_chatbot where email = '$usr' and contrasena = '$pwd'";
     return executeQuery($con, $sql);
 }
-
 
 function insertLogAcceso($con, $usuario, $tipo_acceso)
 {
