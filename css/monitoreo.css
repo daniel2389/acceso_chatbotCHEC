@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+body {
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.contenido {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 3em;
+}
+
+.card-panel {
+    padding: 0.8em;
+    width: 49%
+}
+
+h5 {
+    margin-top: 0.1em;
+}
+
+th,
+td {
+    padding: 0px;
+    background-color: 1E8FFF;
+}
+
+.filtro {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    background-color: darkslateblue;
+    padding: 0.5em;
+}

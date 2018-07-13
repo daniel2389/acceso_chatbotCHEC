@@ -33,9 +33,19 @@ $(document).ready(function () {
                         closeOnConfirm: false
                     }, );
                 } else {
-                    var idusuario = response[0].idusuario
-                    localStorage.setItem('idusuario', idusuario)
-                    window.location.href = "bot.html"
+                    if (response[0].tipo_usuario == "monitoreo") {
+                        var nombre = response[0].nombre
+                        localStorage.setItem('nombre', nombre)
+                        var idusuario = response[0].idusuario
+                        localStorage.setItem('idusuario', idusuario)
+                        window.location.href = "monitoreo.html"
+                    } else {
+                        var idusuario = response[0].nombre
+                        localStorage.setItem('nombre', nombre)
+                        var idusuario = response[0].idusuario
+                        localStorage.setItem('idusuario', idusuario)
+                        window.location.href = "bot.html"
+                    }
                 }
             }
         });

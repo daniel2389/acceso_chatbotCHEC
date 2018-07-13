@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', '1');
 require 'consultas.php';
 
-class InfoApi
+class ChatbotApi
 {
     private $conPostgres;
     private $conMongo;
@@ -49,7 +49,6 @@ class InfoApi
         return logQuery($this->conPostgres, $usr, $pwd);
     }
 
-
     //----------------------------INSERTS DE LOG PARA MONITOREO------------------------------------
     public function setLogin($usuario)
     {
@@ -61,4 +60,35 @@ class InfoApi
         return insertLogAcceso($this->conMongo, $usuario, 'Salida');
     }
 
+    //------------------------- FILTER PARA EL MONITOREO ------------------------------------------
+
+    public function getResultado($tipo_indisponibilidad)
+    {
+        return filterResultado($this->conMongo, $tipo_indisponibilidad);
+
+    }
+    public function getBusqueda($contexto, $fechainicio, $fechafin)
+    {
+        return filterBusqueda($this->conMongo, $contexto, $fechainicio, $fechafin);
+    }
+
+    public function getCriterioBusqueda($criterio)
+    {
+        return filterCriterioBusqueda($this->conMongo, $criterio);
+    }
+
+    public function getUsoWeb($tipo_acceso)
+    {
+        return filterUsoWeb($this->conMongo, $tipo_acceso);
+    }
+
+    public function getIngresoPorHora()
+    {
+        return filterIngresoPorHora($this->conMongo);
+    }
+
+    public function getIngresoPorDia()
+    {
+        return filterIngresoPorDia($this->conMongo);
+    }
 }

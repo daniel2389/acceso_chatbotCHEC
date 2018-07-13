@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/sweetalert2/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="css/monitoreo.css">
+    <title>Monitoreo ChatbotCHEC</title>
+</head>
+
+<body>
+    <div class="">
+        <nav class="blue darken-2">
+            <div class="nav-wrapper">
+                <a href="#!" class="brand-logo">Panel de Monitoreo</a>
+
+                <a href="#" data-target="barraLateral" class="sidenav-trigger">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a id="logoutButton">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="filtro">
+            <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 40%">
+                <i class="fa fa-calendar"></i>&nbsp;
+                <span></span>
+                <i class="fa fa-caret-down"></i>
+            </div>  
+        </div>
+
+        <ul class="sidenav" id="barraLateral">
+            <li>
+                <a href="mobile.html">
+                    <i class="fas fa-sign-out-alt"></i>Cerrar Sesión</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="contenido">
+        <div class="card-panel">
+            <h5>Búsquedas</h5>
+            <table class="responsive-table highlight">
+                <thead>
+                    <tr>
+                        <th data-field="id">Nombre</th>
+                        <th data-field="name">Porcentaje</th>
+                        <th data-field="price">Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>No tengo servicio de energia</td>
+                        <td>100%</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>Suspensión programada</td>
+                        <td>100%</td>
+                        <td>100</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-panel">
+            <h5>Gráfico de Búsquedas</h5>
+        </div>
+        <div class="card-panel">
+            <h5>Resultados</h5>
+            <table class="responsive-table highlight">
+                <thead>
+                    <tr>
+                        <th data-field="id">Nombre</th>
+                        <th data-field="name">Porcentaje</th>
+                        <th data-field="price">Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Suspensión Programada</td>
+                        <td>100%</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>Suspensión Efectiva</td>
+                        <td>100%</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Circuito</td>
+                        <td>100%</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Daño</td>
+                        <td>100%</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Nada</td>
+                        <td>100%</td>
+                        <td>100</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-panel">
+            <h5>Gráfico de Resultados</h5>
+        </div>
+        <div class="card-panel">
+            <h5>Criterio Búsqueda</h5>
+            <table class="responsive-table highlight">
+                <thead>
+                    <tr>
+                        <th data-field="id">Nombre</th>
+                        <th data-field="name">Porcentaje</th>
+                        <th data-field="price">Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>NIU</td>
+                        <td>100%</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>Nombre</td>
+                        <td>100%</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Dirección</td>
+                        <td>100%</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>C.C.</td>
+                        <td>100%</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>NIT</td>
+                        <td>100%</td>
+                        <td>100</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-panel">
+            <h5>Gráfico Criterio Búsqueda</h5>
+        </div>
+        <div class="card-panel">
+            <h5>Uso vía web</h5>
+            <table class="responsive-table highlight">
+                <thead>
+                    <tr>
+                        <th data-field="id">Nombre</th>
+                        <th data-field="name">Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ingreso</td>
+                        <td>200</td>
+
+                    </tr>
+                    <tr>
+                        <td>Salida</td>
+                        <td>200</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-panel">
+            <h5>Gráfico Uso vía web</h5>
+        </div>
+        <div class="card-panel">
+            <h5>Gráfico uso por día</h5>
+        </div>
+        <div class="card-panel">
+            <h5>Gráfico Promedio hora</h5>
+        </div>
+    </div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+    crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<script src="https://unpkg.com/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<script src="https://unpkg.com/promise-polyfill"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+<script src="js/monitoreo.js"></script>
+
+</html>

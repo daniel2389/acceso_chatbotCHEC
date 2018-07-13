@@ -2,7 +2,7 @@
 
 require 'lib.php';
 
-$api = new InfoApi();
+$api = new ChatbotApi();
 $usr = $_POST['user'];
 $pwd = $_POST['pwd'];
 

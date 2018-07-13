@@ -1,8 +1,8 @@
 <?php
-session_start();
 require 'lib.php';
+session_start();
 
-$api = new InfoApi();
+$api = new ChatbotApi();
 $idusr = $_POST['idusuario'];
 
 if (isset($idusr)) {
