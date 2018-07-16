@@ -22,11 +22,12 @@ function logQuery($con, $usr, $pwd)
 }
 
 function insertLogAcceso($con, $usuario, $tipo_acceso)
+
 {
     $bulk = new MongoDB\Driver\BulkWrite;
     $a = $bulk->insert(
         [
-            'FECHA' => date("d-m-Y G:i"),
+            'FECHA' => new \MongoDB\BSON\UTCDateTime(new \DateTime()),
             'USUARIO' => $usuario,
             'TIPO_ACCESO' => $tipo_acceso,
         ]);

@@ -39,3 +39,7 @@ td {
     background-color: darkslateblue;
     padding: 0.5em;
 }
+
+#logoutLateral{
+    cursor: pointer;
+}

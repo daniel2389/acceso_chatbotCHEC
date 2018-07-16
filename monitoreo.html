@@ -39,15 +39,15 @@
 
         <div class="filtro">
             <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 40%">
-                <i class="fa fa-calendar"></i>&nbsp;
+                <i class="far fa-calendar-alt"></i>&nbsp;
                 <span></span>
-                <i class="fa fa-caret-down"></i>
-            </div>  
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </div>
 
         <ul class="sidenav" id="barraLateral">
             <li>
-                <a href="mobile.html">
+                <a id="logoutLateral">
                     <i class="fas fa-sign-out-alt"></i>Cerrar Sesión</a>
             </li>
         </ul>
@@ -80,6 +80,7 @@
         </div>
         <div class="card-panel">
             <h5>Gráfico de Búsquedas</h5>
+            <canvas id="busqueda"></canvas>
         </div>
         <div class="card-panel">
             <h5>Resultados</h5>
@@ -122,6 +123,7 @@
         </div>
         <div class="card-panel">
             <h5>Gráfico de Resultados</h5>
+            <canvas id="resultados"></canvas>
         </div>
         <div class="card-panel">
             <h5>Criterio Búsqueda</h5>
@@ -164,6 +166,7 @@
         </div>
         <div class="card-panel">
             <h5>Gráfico Criterio Búsqueda</h5>
+            <div class="criterioBusqueda"></div>
         </div>
         <div class="card-panel">
             <h5>Uso vía web</h5>
@@ -192,6 +195,7 @@
         </div>
         <div class="card-panel">
             <h5>Gráfico uso por día</h5>
+            <canvas id="usoPordia"></canvas>
         </div>
         <div class="card-panel">
             <h5>Gráfico Promedio hora</h5>
@@ -209,6 +213,12 @@
 <script src="https://unpkg.com/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <script src="https://unpkg.com/promise-polyfill"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="js/busqueda.js"></script>
+<script src="js/resultado.js"></script>
+<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+<script src="js/criterio_busqueda.js"></script>
 <script src="js/monitoreo.js"></script>
+
 
 </html>
