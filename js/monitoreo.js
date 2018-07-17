@@ -1,3 +1,7 @@
+import {initBusquedasGraph} from './busquedas.js';
+
+
+
 $(document).ready(function () {
     validarSesion();
     $('.tooltipped').tooltip();
@@ -147,6 +151,7 @@ function llenarTablas(response){
     let porcentajesBusqueda = getPorcentaje([response.res_busqueda.c1.n, response.res_busqueda.c2.n]);
     $('#porcentaje_c1').text(porcentajesBusqueda[0]);
     $('#porcentaje_c2').text(porcentajesBusqueda[1]);
+    initBusquedasGraph(response.res_busqueda);
 }
 
 function getPorcentaje(arrayEntrada){
