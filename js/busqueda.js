@@ -1,30 +1,20 @@
-// Grafico busquedas
-var ctx = document.getElementById("busqueda");
-var myChart = new Chart(ctx, {
+new Chart(document.getElementById("busqueda"), {
     type: 'bar',
     data: {
         labels: ["No tengo servicio de energía", "Suspensión Programada"],
         datasets: [{
-            label: 'Opciones más buscadas',
-            data: [12, 19],
-            backgroundColor: [
-                'rgba(255, 99, 132)',
-                'rgba(54, 162, 235)',
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-            ],
-            borderWidth: 1
+            label: "# de veces buscadas",
+            backgroundColor: ["#3e95cd", "#E8680C"],
+            data: [2478, 5267]
         }]
     },
     options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
+        legend: {
+            display: false
+        },
+        title: {
+            display: true,
+            text: ''
         }
     }
 });

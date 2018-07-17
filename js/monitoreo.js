@@ -1,5 +1,6 @@
 $(document).ready(function () {
     validarSesion();
+    $('.tooltipped').tooltip();
     $('.sidenav').sidenav();
     $('#logoutButton').click(function () {
         logout()
@@ -7,7 +8,9 @@ $(document).ready(function () {
     $('#logoutLateral').click(function () {
         logout()
     });
+
 });
+
 
 /* PLUGIN FILTRO */
 $(function () {
@@ -15,11 +18,16 @@ $(function () {
     var start = moment().subtract(29, 'days');
     var end = moment();
 
+
     function cb(start, end) {
         $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+
+        cargarBusqueda(start._d.toString(), end._d.toString());
+        
     }
 
     $('#reportrange').daterangepicker({
+
         startDate: start,
         endDate: end,
         ranges: {
@@ -114,21 +122,26 @@ function logout() {
 }
 
 
-
-
-function cargarBusqueda() {
-
+function cargarBusqueda(fechainicio, fechafin) {
+    var data = {
+        contexto: 'c1',
+        fechaInicio: fechainicio,
+        fechaFin: fechafin
+    }
 
     $.ajax({
-        type: "get",
+        type: "post",
         url: "server/getBusqueda.php",
-        data: "data",
+        data: data,
         dataType: "json",
         success: function (response) {
+            console.log(response);
+            
 
         }
     });
 }
+
 
 function cargarResultado() {
 
@@ -143,6 +156,7 @@ function cargarResultado() {
         }
     });
 }
+
 
 function cargarCriterioBusqueda() {
 
@@ -171,61 +185,3 @@ function cargarUsoWeb() {
         }
     });
 }
-
-function cargarIngresoPorHora(){
-
-
-    $.ajax({
-        type: "get",
-        url: "server/",
-        data: "data",
-        dataType: "dataType",
-        success: function (response) {
-            
-        }
-    });
-}
-function cargarIngresoPorDia(){
-    
-}
-
-
-
-// Grafico busquedas
-var ctx = document.getElementById("busqueda");
-var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ["No tengo servicio de energía", "Suspensión Programada"],
-        datasets: [{
-            label: 'Opciones más buscadas',
-            data: [12, 19],
-            backgroundColor: [
-                'rgba(255, 99, 132)',
-                'rgba(54, 162, 235)',
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
-                }
-            }]
-        }
-    }
-});
-
-
-
-
-
-
-  
-  

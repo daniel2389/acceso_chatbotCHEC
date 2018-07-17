@@ -1,5 +1,5 @@
-//criterio busqueda
-var ctx = document.getElementById("criterioBusqueda");
+//uso por hora
+/* var ctx = document.getElementById("usoPorHora");
 var myChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
@@ -33,4 +33,26 @@ var myChart = new Chart(ctx, {
             }]
         }
     }
-});
+}); */
+
+new Chart(document.getElementById("usoPorHora"), {
+    type: 'line',
+    data: {
+      labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
+      datasets: [{ 
+          data: [86,114,106,106,107,111,133,221,783,2478],
+          label: "Uso por hora",
+          borderColor: "#077F00",
+          fill: false
+        },
+      ]
+    },
+    options: {
+      title: {
+        display: false,
+        text: ''
+      }
+    }
+  });
+  
+  

@@ -22,7 +22,6 @@ function logQuery($con, $usr, $pwd)
 }
 
 function insertLogAcceso($con, $usuario, $tipo_acceso)
-
 {
     $bulk = new MongoDB\Driver\BulkWrite;
     $a = $bulk->insert(
@@ -36,38 +35,69 @@ function insertLogAcceso($con, $usuario, $tipo_acceso)
 }
 
 //-------------------------------------- OBTENER VALORES PARA EL MONITOREO ------------------------------
-function filterResultado($con, $tipo_indisponibilidad)
+function filterResultado($con, $tipo_indisponibilidad, $fechainicio, $fechafin)
 {
-    $filter = ['TIPO_INDISPONIBILIDAD' => $tipo_indisponibilidad];
+    /* $filter = ['TIPO_INDISPONIBILIDAD' => $tipo_indisponibilidad];
     $query = new MongoDB\Driver\Query($filter);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".log_resultados", $query);
     $respuesta = current($result->toArray());
+    return $respuesta; */
+    $filter = [
+        'FECHA_RESULTADO' => ['$gte' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechainicio)), '$lt' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechafin))],
+        'TIPO_INDISPONIBILIDAD' => $tipo_indisponibilidad
+    ];
+    $Command = new MongoDB\Driver\Command(["count" => "log_resultados", "query" => $filter]);
+    $result = $con->executeCommand($GLOBALS['dbname'], $Command);
+    $respuesta = current($result->toArray());
     return $respuesta;
+
 }
 
 function filterBusqueda($con, $contexto, $fechainicio, $fechafin)
 {
-    $filter = ['CONTEXTO' => $contexto];
-    $Command = new MongoDB\Driver\Command(["count" => "log_busqueda", "query" => ['CONTEXTO' => $contexto]]);
-    $Result = $con->executeCommand($GLOBALS['dbname'], $Command);
+    $filter = [
+        'FECHA_BUSQUEDA' => ['$gte' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechainicio)), '$lt' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechafin))],
+        'CONTEXTO' => $contexto
+    ];
+    $Command = new MongoDB\Driver\Command(["count" => "log_busqueda", "query" => $filter]);
+    $result = $con->executeCommand($GLOBALS['dbname'], $Command);
     $respuesta = current($result->toArray());
     return $respuesta;
 }
 
-function filterCriterioBusqueda($con, $criterio)
+function filterCriterioBusqueda($con, $criterio, $fechainicio, $fechafin)
 {
-    $filter = ['CRITERIO' => $criterio];
+    /* $filter = ['CRITERIO' => $criterio];
     $query = new MongoDB\Driver\Query($filter);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".log_busqueda", $query);
     $respuesta = current($result->toArray());
+    return $respuesta; */
+
+    $filter = [
+        'FECHA_BUSQUEDA' => ['$gte' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechainicio)), '$lt' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechafin))],
+        'CRITERIO' => $criterio
+    ];
+    $Command = new MongoDB\Driver\Command(["count" => "log_busqueda", "query" => $filter]);
+    $result = $con->executeCommand($GLOBALS['dbname'], $Command);
+    $respuesta = current($result->toArray());
     return $respuesta;
+
 }
 
-function filterUsoWeb($con, $tipo_acceso)
+function filterUsoWeb($con, $tipo_acceso, $fechainicio, $fechafin)
 {
-    $filter = ['TIPO_ACCESO' => $tipo_acceso];
+    /* $filter = ['TIPO_ACCESO' => $tipo_acceso];
     $query = new MongoDB\Driver\Query($filter);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".log_accecso_web", $query);
+    $respuesta = current($result->toArray());
+    return $respuesta; */
+
+    $filter = [
+        'FECHA' => ['$gte' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechainicio)), '$lt' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechafin))],
+        'TIPO_ACCESO' => $tipo_acceso
+    ];
+    $Command = new MongoDB\Driver\Command(["count" => "log_acceso_web", "query" => $filter]);
+    $result = $con->executeCommand($GLOBALS['dbname'], $Command);
     $respuesta = current($result->toArray());
     return $respuesta;
 }

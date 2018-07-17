@@ -20,16 +20,18 @@
 
 <body>
     <div class="">
-        <nav class="blue darken-2">
+        <nav class="blue lighten-2">
             <div class="nav-wrapper">
-                <a href="#!" class="brand-logo">Panel de Monitoreo</a>
+                <img id="imagenCHEC" src="img/LogoUMChec-01.png" alt="">
+                <img id="imagenCIAD" src="img/LogoCiad_Abril02-01_opt.png" alt="">
+                <a href="monitoreo.html" class="brand-logo"> Panel de Monitoreo CHATBOT</a>
 
                 <a href="#" data-target="barraLateral" class="sidenav-trigger">
                     <i class="material-icons">menu</i>
                 </a>
                 <ul class="right hide-on-med-and-down">
                     <li>
-                        <a id="logoutButton">
+                        <a id="logoutButton" class="tooltipped" data-position="left" data-tooltip="Cerrar Sesión">
                             <i class="fas fa-sign-out-alt"></i>
                         </a>
                     </li>
@@ -38,9 +40,9 @@
         </nav>
 
         <div class="filtro">
-            <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 40%">
+            <div id="reportrange" class="tooltipped" data-position="left" data-tooltip="Selecciona Fecha">
                 <i class="far fa-calendar-alt"></i>&nbsp;
-                <span></span>
+                <span id="capturaFecha">Selecciona Fecha</span>
                 <i class="fas fa-chevron-down"></i>
             </div>
         </div>
@@ -66,7 +68,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>No tengo servicio de energia</td>
+                        <td>No tengo servicio de energía</td>
                         <td>100%</td>
                         <td>50</td>
                     </tr>
@@ -190,15 +192,23 @@
                 </tbody>
             </table>
         </div>
-        <div class="card-panel">
+        <!-- <div class="card-panel">
             <h5>Gráfico Uso vía web</h5>
-        </div>
+            <div class="">
+                <span> # Ingresos:</span>
+                <span>Valor</span>
+                <br>
+                <span># Salidas:</span>
+                <span>Valor</span>
+            </div>
+        </div> -->
         <div class="card-panel">
             <h5>Gráfico uso por día</h5>
-            <canvas id="usoPordia"></canvas>
+            <canvas id="usoPorDia"></canvas>
         </div>
         <div class="card-panel">
             <h5>Gráfico Promedio hora</h5>
+            <canvas id="usoPorHora"></canvas>
         </div>
     </div>
 
@@ -218,6 +228,8 @@
 <script src="js/resultado.js"></script>
 <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
 <script src="js/criterio_busqueda.js"></script>
+<script src="js/uso_por_dia.js"></script>
+<script src="js/uso_por_hora.js"></script>
 <script src="js/monitoreo.js"></script>
 
 

@@ -6,13 +6,13 @@ var myChart = new Chart(ctx, {
         labels: ["Suspensión Programada", "Suspensión Efectiva", "Circuito", "Daño", "Nada"],
         datasets: [{
             label: 'Resultados',
-            data: [12, 19, 3, 5, 2],
+            data: [800, 233, 456, 567, 150],
             backgroundColor: [
-                'rgba(255, 99, 132)',
-                'rgba(54, 162, 235)',
-                'rgba(255, 206, 86)',
-                'rgba(75, 192, 192)',
-                'rgba(153, 102, 255)',
+                'rgba(255, 99, 132, 0.3)',
+                'rgba(54, 162, 235, 0.3)',
+                'rgba(255, 206, 86, 0.3)',
+                'rgba(75, 192, 192, 0.3)',
+                'rgba(153, 102, 255, 0.3)',
             ],
             borderColor: [
                 'rgba(255,99,132,1)',
@@ -28,7 +28,7 @@ var myChart = new Chart(ctx, {
         scales: {
             yAxes: [{
                 ticks: {
-                    beginAtZero:true
+                    beginAtZero: true
                 }
             }]
         }

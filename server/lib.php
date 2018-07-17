@@ -62,9 +62,9 @@ class ChatbotApi
 
     //------------------------- FILTER PARA EL MONITOREO ------------------------------------------
 
-    public function getResultado($tipo_indisponibilidad)
+    public function getResultado($tipo_indisponibilidad, $fechainicio, $fechafin)
     {
-        return filterResultado($this->conMongo, $tipo_indisponibilidad);
+        return filterResultado($this->conMongo, $tipo_indisponibilidad, $fechainicio, $fechafin);
 
     }
     public function getBusqueda($contexto, $fechainicio, $fechafin)
@@ -72,14 +72,14 @@ class ChatbotApi
         return filterBusqueda($this->conMongo, $contexto, $fechainicio, $fechafin);
     }
 
-    public function getCriterioBusqueda($criterio)
+    public function getCriterioBusqueda($criterio, $fechainicio, $fechafin)
     {
-        return filterCriterioBusqueda($this->conMongo, $criterio);
+        return filterCriterioBusqueda($this->conMongo, $criterio, $fechainicio, $fechafin);
     }
 
-    public function getUsoWeb($tipo_acceso)
+    public function getUsoWeb($tipo_acceso, $fechainicio, $fechafin)
     {
-        return filterUsoWeb($this->conMongo, $tipo_acceso);
+        return filterUsoWeb($this->conMongo, $tipo_acceso, $fechainicio, $fechafin);
     }
 
     public function getIngresoPorHora()
