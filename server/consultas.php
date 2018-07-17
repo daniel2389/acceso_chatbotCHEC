@@ -109,5 +109,27 @@ function filterIngresoPorHora($con)
 
 function filterIngresoPorDia($con)
 {
+    $Command = new MongoDB\Driver\Command([
+        'aggregate' => 'log_busqueda',
+        'pipeline' => [
+            [
+                '$project' => [
+                    "dia_semana" => [
+                        '$dayOfWeek' => '$FECHA_BUSQUEDA'
+                    ]
+                ]
+            ],
+            [
+                '$group' => ['_id' => '$dia_semana',
+                'sum' => ['$sum' => 1]]
+            ],
+            [
+                '$sort' => ["_id" => 1]
+            ]
+        ]
+    ]);
+    $result = $con->executeCommand($GLOBALS['dbname'], $Command);
+    $respuesta = current($result->toArray());
+    return $respuesta;
 
 }

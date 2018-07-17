@@ -2,6 +2,13 @@ import {initBusquedasGraph} from './busqueda.js';
 
 
 
+
+
+
+import {initIngresoPorDia} from './uso_por_dia.js';
+
+
+
 $(document).ready(function () {
     validarSesion();
     $('.tooltipped').tooltip();
@@ -12,6 +19,7 @@ $(document).ready(function () {
     $('#logoutLateral').click(function () {
         logout()
     });
+    cargarFijos();
 
 });
 
@@ -140,6 +148,17 @@ function cargarDatos(fechainicio, fechafin) {
             //llenar cada tabla e iniciar cada graph
             llenarTablas(response)
 
+        }
+    });
+}
+
+function cargarFijos() {
+    $.ajax({
+        type: "post",
+        url: "server/ingreso_dia.php",
+        dataType: "json",
+        success: function (response) {
+            initIngresoPorDia(response.result);
         }
     });
 }
