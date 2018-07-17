@@ -21,9 +21,7 @@ $(function () {
 
     function cb(start, end) {
         $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-
-        cargarBusqueda(start._d.toString(), end._d.toString());
-        
+        cargarDatos(start._d.toString(), end._d.toString());
     }
 
     $('#reportrange').daterangepicker({
@@ -122,66 +120,49 @@ function logout() {
 }
 
 
-function cargarBusqueda(fechainicio, fechafin) {
+function cargarDatos(fechainicio, fechafin) {
     var data = {
-        contexto: 'c1',
         fechaInicio: fechainicio,
         fechaFin: fechafin
     }
 
     $.ajax({
         type: "post",
-        url: "server/getBusqueda.php",
+        url: "server/graph.php",
         data: data,
         dataType: "json",
         success: function (response) {
             console.log(response);
-            
+            //llenar cada tabla e iniciar cada graph
+            llenarTablas(response)
 
         }
     });
 }
 
 
-function cargarResultado() {
+function llenarTablas(response){
+    $('#cantidad_c1').text(response.res_busqueda.c1.n);
+    $('#cantidad_c2').text(response.res_busqueda.c2.n);
+    let porcentajesBusqueda = getPorcentaje([response.res_busqueda.c1.n, response.res_busqueda.c2.n]);
+    $('#porcentaje_c1').text(porcentajesBusqueda[0]);
+    $('#porcentaje_c2').text(porcentajesBusqueda[1]);
+}
 
+function getPorcentaje(arrayEntrada){
 
-    $.ajax({
-        type: "get",
-        url: "server/getResultado.php",
-        data: "data",
-        dataType: "json",
-        success: function (response) {
-
-        }
+    let suma = 0;
+    
+    arrayEntrada.forEach(element => {
+        suma += element;
     });
+
+    let arregloRespuesta = [];
+    arrayEntrada.forEach(element => {
+        arregloRespuesta.push((Math.round(element/suma*100))+"%");
+    });
+
+    return arregloRespuesta;
 }
 
 
-function cargarCriterioBusqueda() {
-
-
-    $.ajax({
-        type: "get",
-        url: "server/getCriterioBusqueda.php",
-        data: "data",
-        dataType: "json",
-        success: function (response) {
-
-        }
-    });
-}
-
-function cargarUsoWeb() {
-
-
-    $.ajax({
-        type: "get",
-        url: "server/getUsoWeb.php",
-        data: "data",
-        dataType: "json",
-        success: function (response) {
-
-        }
-    });
-}

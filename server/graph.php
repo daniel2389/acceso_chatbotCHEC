@@ -27,4 +27,4 @@ $respuestaJSON['res_criterioBusqueda']['nit'] = $api->getCriterioBusqueda('nit',
 $respuestaJSON['res_usoViaWeb']['Ingreso'] = $api->getUsoWeb('Ingreso', $fechainicio, $fechafin);
 $respuestaJSON['res_usoViaWeb']['Salida'] = $api->getUsoWeb('Salida', $fechainicio, $fechafin);
 
-return json_encode($respuestaJSON);
+echo json_encode($respuestaJSON);
