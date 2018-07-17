@@ -1,4 +1,4 @@
-import {initBusquedasGraph} from './busquedas.js';
+import {initBusquedasGraph} from './busqueda.js';
 
 
 

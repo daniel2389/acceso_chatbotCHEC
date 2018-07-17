@@ -6,7 +6,7 @@ export function initBusquedasGraph(data) {
             datasets: [{
                 label: "# de veces buscadas",
                 backgroundColor: ["#3e95cd", "#E8680C"],
-                data: [2478, 5267]
+                data: [data.c1.n, data.c2.n]
             }]
         },
         options: {
