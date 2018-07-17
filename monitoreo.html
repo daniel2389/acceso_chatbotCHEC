@@ -69,13 +69,13 @@
                 <tbody>
                     <tr>
                         <td>No tengo servicio de energía</td>
-                        <td id="porcentaje_c1">100%</td>
-                        <td id="cantidad_c1">50</td>
+                        <td id="porcentaje_c1"></td>
+                        <td id="cantidad_c1"></td>
                     </tr>
                     <tr>
                         <td>Suspensión programada</td>
-                        <td id="porcentaje_c2">100%</td>
-                        <td id="cantidad_c2">100</td>
+                        <td id="porcentaje_c2"></td>
+                        <td id="cantidad_c2"></td>
                     </tr>
                 </tbody>
             </table>
@@ -97,28 +97,28 @@
                 <tbody>
                     <tr>
                         <td>Suspensión Programada</td>
-                        <td>100%</td>
-                        <td>50</td>
+                        <td id="porcentaje_susp_programada"></td>
+                        <td id="cantidad_susp_programada"></td>
                     </tr>
                     <tr>
                         <td>Suspensión Efectiva</td>
-                        <td>100%</td>
-                        <td>100</td>
+                        <td id="porcentaje_susp_efectiva"></td>
+                        <td id="cantidad_susp_efectiva"></td>
                     </tr>
                     <tr>
                         <td>Circuito</td>
-                        <td>100%</td>
-                        <td>100</td>
+                        <td id="porcentaje_circuito"></td>
+                        <td id="cantidad_circuito"></td>
                     </tr>
                     <tr>
                         <td>Daño</td>
-                        <td>100%</td>
-                        <td>100</td>
+                        <td id="porcentaje_dano"></td>
+                        <td id="cantidad_dano"></td>
                     </tr>
                     <tr>
                         <td>Nada</td>
-                        <td>100%</td>
-                        <td>100</td>
+                        <td id="porcentaje_nada"></td>
+                        <td id="cantidad_nada"></td>
                     </tr>
                 </tbody>
             </table>
@@ -140,28 +140,28 @@
                 <tbody>
                     <tr>
                         <td>NIU</td>
-                        <td>100%</td>
-                        <td>50</td>
-                    </tr>
-                    <tr>
-                        <td>Nombre</td>
-                        <td>100%</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <td>Dirección</td>
-                        <td>100%</td>
-                        <td>100</td>
+                        <td id="porcentaje_niu"></td>
+                        <td id="cantidad_niu"></td>
                     </tr>
                     <tr>
                         <td>C.C.</td>
-                        <td>100%</td>
-                        <td>100</td>
+                        <td id="porcentaje_cc"></td>
+                        <td id="cantidad_cc"></td>
+                    </tr>
+                    <tr>
+                        <td>Nombre</td>
+                        <td id="porcentaje_nombre"></td>
+                        <td id="cantidad_nombre"></td>
+                    </tr>
+                    <tr>
+                        <td>Dirección</td>
+                        <td id="porcentaje_direccion"></td>
+                        <td id="cantidad_direccion"></td>
                     </tr>
                     <tr>
                         <td>NIT</td>
-                        <td>100%</td>
-                        <td>100</td>
+                        <td id="porcentaje_nit"></td>
+                        <td id="cantidad_nit"></td>
                     </tr>
                 </tbody>
             </table>
@@ -182,12 +182,12 @@
                 <tbody>
                     <tr>
                         <td>Ingreso</td>
-                        <td>200</td>
+                        <td id="cantidadIngreso"></td>
 
                     </tr>
                     <tr>
                         <td>Salida</td>
-                        <td>200</td>
+                        <td id="cantidadSalida"></td>
                     </tr>
                 </tbody>
             </table>
@@ -202,14 +202,14 @@
                 <span>Valor</span>
             </div>
         </div> -->
-        <div class="card-panel">
+        <!-- <div class="card-panel">
             <h5>Gráfico uso por día</h5>
             <canvas id="usoPorDia"></canvas>
         </div>
         <div class="card-panel">
             <h5>Gráfico Promedio hora</h5>
             <canvas id="usoPorHora"></canvas>
-        </div>
+        </div> -->
     </div>
 
 </body>
@@ -225,11 +225,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script src="js/busqueda.js" type="module"></script>
-<script src="js/resultado.js"></script>
+<script src="js/resultado.js" type="module"></script>
 <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-<script src="js/criterio_busqueda.js"></script>
-<script src="js/uso_por_dia.js"></script>
-<script src="js/uso_por_hora.js"></script>
+<script src="js/criterio_busqueda.js" type="module"></script>
+<script src="js/uso_por_dia.js" type="module"></script>
+<script src="js/uso_por_hora.js" type="module"></script>
 <script src="js/monitoreo.js" type="module"></script>
 
 
