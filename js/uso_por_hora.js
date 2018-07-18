@@ -35,24 +35,31 @@ var myChart = new Chart(ctx, {
     }
 }); */
 
-new Chart(document.getElementById("usoPorHora"), {
-    type: 'line',
-    data: {
-      labels: [1500,1600,1700,1750,1800,1850,1900,1950,1999,2050],
-      datasets: [{ 
-          data: [86,114,106,106,107,111,133,221,783,2478],
-          label: "Uso por hora",
-          borderColor: "#077F00",
-          fill: false
+export function initIngresoHora(data) {
+    let hours = [];
+    let sum = [];
+    data.forEach(element => {
+        hours.push(element._id);
+        sum.push(element.sum)
+    });
+    new Chart(document.getElementById("usoPorHora"), {
+        type: 'line',
+        data: {
+            labels: hours,
+            datasets: [{
+                data: sum,
+                label: "Uso por hora",
+                borderColor: "#077F00",
+                fill: false
+            },
+            ]
         },
-      ]
-    },
-    options: {
-      title: {
-        display: false,
-        text: ''
-      }
-    }
-  });
-  
-  
+        options: {
+            title: {
+                display: false,
+                text: ''
+            }
+        }
+    });
+}
+

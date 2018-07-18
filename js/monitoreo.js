@@ -1,9 +1,16 @@
-import {initBusquedasGraph} from './busqueda.js';
+import {
+    initBusquedasGraph
+} from './busqueda.js';
 
+import {
+    initResultadosGraph
+} from './resultado.js';
 
+import {
+    initCriterioGraph
+} from "./criterio_busqueda.js";
 
-
-
+import { initIngresoHora } from "./uso_por_hora.js";
 
 import {initIngresoPorDia} from './uso_por_dia.js';
 
@@ -133,6 +140,7 @@ function logout() {
 
 
 function cargarDatos(fechainicio, fechafin) {
+    $('.criterioBusqueda').empty();
     var data = {
         fechaInicio: fechainicio,
         fechaFin: fechafin
@@ -144,7 +152,6 @@ function cargarDatos(fechainicio, fechafin) {
         data: data,
         dataType: "json",
         success: function (response) {
-            console.log(response);
             //llenar cada tabla e iniciar cada graph
             llenarTablas(response)
 
@@ -158,35 +165,87 @@ function cargarFijos() {
         url: "server/ingreso_dia.php",
         dataType: "json",
         success: function (response) {
-            initIngresoPorDia(response.result);
+            initIngresoPorDia(response.dia.result);
+            initIngresoHora(response.hora.result);
         }
     });
 }
 
 
-function llenarTablas(response){
+function llenarTablas(response) {
+    // TABLA DE BUSQUEDAS
     $('#cantidad_c1').text(response.res_busqueda.c1.n);
     $('#cantidad_c2').text(response.res_busqueda.c2.n);
+    // TABLA DE RESULTADOS
+    $('#cantidad_susp_programada').text(response.res_resultados.suspensionProgramada.n);
+    $('#cantidad_susp_efectiva').text(response.res_resultados.suspensionEfectiva.n);
+    $('#cantidad_circuito').text(response.res_resultados.indisponibilidadNivelCircuito.n);
+    $('#cantidad_dano').text(response.res_resultados.indisponibilidadNivelNodo.n);
+    $('#cantidad_nada').text(response.res_resultados.sinIndisponibilidadReportada.n);
+    // TABLA DE CRITERIO RESULTADO
+    $('#cantidad_niu').text(response.res_criterioBusqueda.niu.n);
+    $('#cantidad_cc').text(response.res_criterioBusqueda.cedula.n);
+    $('#cantidad_nombre').text(response.res_criterioBusqueda.nombre.n);
+    $('#cantidad_direccion').text(response.res_criterioBusqueda.direccion.n);
+    $('#cantidad_nit').text(response.res_criterioBusqueda.nit.n);
+    // TABLA DE ACCESO WEB
+    $('#cantidadIngreso').text(response.res_usoViaWeb.Ingreso.n);
+    $('#cantidadSalida').text(response.res_usoViaWeb.Salida.n);
+    //TABLA CALIFICACIONES
+    $('#excelente').text(response.res_calificaciones.excelente.n);
+    $('#bueno').text(response.res_calificaciones.bueno.n);
+    $('#regular').text(response.res_calificaciones.regular.n);
+    $('#malo').text(response.res_calificaciones.malo.n);
+    console.log(response.res_calificaciones);
+
+    // creacion porcentajes Busquedas
     let porcentajesBusqueda = getPorcentaje([response.res_busqueda.c1.n, response.res_busqueda.c2.n]);
     $('#porcentaje_c1').text(porcentajesBusqueda[0]);
     $('#porcentaje_c2').text(porcentajesBusqueda[1]);
     initBusquedasGraph(response.res_busqueda);
+    // creacion porcentajes Resultados
+    let porcentajesResultado = getPorcentaje([response.res_resultados.suspensionProgramada.n,
+        response.res_resultados.suspensionEfectiva.n, response.res_resultados.indisponibilidadNivelCircuito.n,
+        response.res_resultados.indisponibilidadNivelNodo.n, response.res_resultados.sinIndisponibilidadReportada.n
+    ]);
+    $('#porcentaje_susp_programada').text(porcentajesResultado[0]);
+    $('#porcentaje_susp_efectiva').text(porcentajesResultado[1]);
+    $('#porcentaje_circuito').text(porcentajesResultado[2]);
+    $('#porcentaje_dano').text(porcentajesResultado[3]);
+    $('#porcentaje_nada').text(porcentajesResultado[4]);
+    initResultadosGraph(response.res_resultados);
+    // creacion porcentajes criterio
+    let porcentajesCriterio = getPorcentaje([response.res_criterioBusqueda.niu.n, response.res_criterioBusqueda.cedula.n,
+        response.res_criterioBusqueda.nombre.n, response.res_criterioBusqueda.direccion.n, response.res_criterioBusqueda.nit.n
+    ]);
+    $('#porcentaje_niu').text(porcentajesCriterio[0]);
+    $('#porcentaje_cc').text(porcentajesCriterio[1]);
+    $('#porcentaje_nombre').text(porcentajesCriterio[2]);
+    $('#porcentaje_direccion').text(porcentajesCriterio[3]);
+    $('#porcentaje_nit').text(porcentajesCriterio[4]);
+    initCriterioGraph(response.res_criterioBusqueda);
+
+    
+
+
+
+
+
+
 }
 
-function getPorcentaje(arrayEntrada){
+function getPorcentaje(arrayEntrada) {
 
     let suma = 0;
-    
+
     arrayEntrada.forEach(element => {
         suma += element;
     });
 
     let arregloRespuesta = [];
     arrayEntrada.forEach(element => {
-        arregloRespuesta.push((Math.round(element/suma*100))+"%");
+        arregloRespuesta.push((Math.round(element / suma * 100)) + "%");
     });
 
     return arregloRespuesta;
 }
-
-

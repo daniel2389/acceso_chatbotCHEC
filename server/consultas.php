@@ -104,7 +104,28 @@ function filterUsoWeb($con, $tipo_acceso, $fechainicio, $fechafin)
 
 function filterIngresoPorHora($con)
 {
-
+    $Command = new MongoDB\Driver\Command([
+        'aggregate' => 'log_busqueda',
+        'pipeline' => [
+            [
+                '$project' => [
+                    "hora_dia" => [
+                        '$hour' => '$FECHA_BUSQUEDA'
+                    ]
+                ]
+            ],
+            [
+                '$group' => ['_id' => '$hora_dia',
+                'sum' => ['$sum' => 1]]
+            ],
+            [
+                '$sort' => ["_id" => 1]
+            ]
+        ]
+    ]);
+    $result = $con->executeCommand($GLOBALS['dbname'], $Command);
+    $respuesta = current($result->toArray());
+    return $respuesta;
 }
 
 function filterIngresoPorDia($con)
@@ -132,4 +153,16 @@ function filterIngresoPorDia($con)
     $respuesta = current($result->toArray());
     return $respuesta;
 
+}
+
+function filterCalificaciones($con, $calificacion, $fechainicio, $fechafin)
+{
+    $filter = [
+        'FECHA' => ['$gte' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechainicio)), '$lt' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechafin))],
+        'CALIFICACION' => $calificacion
+    ];
+    $Command = new MongoDB\Driver\Command(["count" => "calificacion", "query" => $filter]);
+    $result = $con->executeCommand($GLOBALS['dbname'], $Command);
+    $respuesta = current($result->toArray());
+    return $respuesta;
 }

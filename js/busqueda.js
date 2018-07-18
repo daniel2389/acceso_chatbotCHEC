@@ -1,8 +1,8 @@
 export function initBusquedasGraph(data) {
     new Chart(document.getElementById("busqueda"), {
-        type: 'bar',
+        type: 'doughnut',
         data: {
-            labels: ["No tengo servicio de energía", "Suspensión Programada"],
+            labels: ["Sin energía", "Susp. Programada"],
             datasets: [{
                 label: "# de veces buscadas",
                 backgroundColor: ["#3e95cd", "#E8680C"],

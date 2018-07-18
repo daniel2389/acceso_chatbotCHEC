@@ -91,4 +91,8 @@ class ChatbotApi
     {
         return filterIngresoPorDia($this->conMongo);
     }
+    public function getCalificaciones($calificacion, $fechainicio, $fechafin)
+    {
+        return filterCalificaciones($this->conMongo, $calificacion, $fechainicio, $fechafin);
+    }
 }

@@ -4,6 +4,7 @@ require 'lib.php';
 
 $api = new ChatbotApi();
 
-$resultado = $api->getIngresoPorDia();
+$resultado['dia'] = $api->getIngresoPorDia();
+$resultado['hora'] = $api->getIngresoPorHora();
 
 echo json_encode($resultado);

@@ -56,142 +56,176 @@
     </div>
 
     <div class="contenido">
-        <div class="card-panel">
-            <h5>Búsquedas</h5>
-            <table class="responsive-table highlight">
-                <thead>
-                    <tr>
-                        <th data-field="id">Nombre</th>
-                        <th data-field="name">Porcentaje</th>
-                        <th data-field="price">Cantidad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>No tengo servicio de energía</td>
-                        <td id="porcentaje_c1">100%</td>
-                        <td id="cantidad_c1">50</td>
-                    </tr>
-                    <tr>
-                        <td>Suspensión programada</td>
-                        <td id="porcentaje_c2">100%</td>
-                        <td id="cantidad_c2">100</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="card-panel">
-            <h5>Gráfico de Búsquedas</h5>
-            <canvas id="busqueda"></canvas>
-        </div>
-        <div class="card-panel">
-            <h5>Resultados</h5>
-            <table class="responsive-table highlight">
-                <thead>
-                    <tr>
-                        <th data-field="id">Nombre</th>
-                        <th data-field="name">Porcentaje</th>
-                        <th data-field="price">Cantidad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Suspensión Programada</td>
-                        <td>100%</td>
-                        <td>50</td>
-                    </tr>
-                    <tr>
-                        <td>Suspensión Efectiva</td>
-                        <td>100%</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <td>Circuito</td>
-                        <td>100%</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <td>Daño</td>
-                        <td>100%</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <td>Nada</td>
-                        <td>100%</td>
-                        <td>100</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="card-panel">
-            <h5>Gráfico de Resultados</h5>
-            <canvas id="resultados"></canvas>
-        </div>
-        <div class="card-panel">
-            <h5>Criterio Búsqueda</h5>
-            <table class="responsive-table highlight">
-                <thead>
-                    <tr>
-                        <th data-field="id">Nombre</th>
-                        <th data-field="name">Porcentaje</th>
-                        <th data-field="price">Cantidad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>NIU</td>
-                        <td>100%</td>
-                        <td>50</td>
-                    </tr>
-                    <tr>
-                        <td>Nombre</td>
-                        <td>100%</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <td>Dirección</td>
-                        <td>100%</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <td>C.C.</td>
-                        <td>100%</td>
-                        <td>100</td>
-                    </tr>
-                    <tr>
-                        <td>NIT</td>
-                        <td>100%</td>
-                        <td>100</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="card-panel">
-            <h5>Gráfico Criterio Búsqueda</h5>
-            <div class="criterioBusqueda"></div>
-        </div>
-        <div class="card-panel">
-            <h5>Uso vía web</h5>
-            <table class="responsive-table highlight">
-                <thead>
-                    <tr>
-                        <th data-field="id">Nombre</th>
-                        <th data-field="name">Cantidad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Ingreso</td>
-                        <td>200</td>
+        <div class="vertical-container">
+            <div class="card-panel busquedas">
+                <h5>Búsquedas</h5>
+                <div class="flex-container">
 
-                    </tr>
-                    <tr>
-                        <td>Salida</td>
-                        <td>200</td>
-                    </tr>
-                </tbody>
-            </table>
+                    <table class="responsive-table highlight">
+                        <thead>
+                            <tr>
+                                <th data-field="id">Nombre</th>
+                                <th class="centered">%</th>
+                                <th class="centered">Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>No tengo servicio de energía</td>
+                                <td id="porcentaje_c1"></td>
+                                <td id="cantidad_c1"></td>
+                            </tr>
+                            <tr>
+                                <td>Suspensión programada</td>
+                                <td id="porcentaje_c2"></td>
+                                <td id="cantidad_c2"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="small-graph">
+                        <canvas id="busqueda" width="200%" height="200%"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-panel resultados">
+                <h5>Resultados</h5>
+                <div class="flex-container">
+
+                    <table class="responsive-table highlight">
+                        <thead>
+                            <tr>
+                                <th data-field="id">Nombre</th>
+                                <th class="centered">%</th>
+                                <th class="centered">Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sin indisponibilidad registrada</td>
+                                <td id="porcentaje_nada"></td>
+                                <td id="cantidad_nada"></td>
+                            </tr>
+                            <tr>
+                                <td>Suspensión Programada</td>
+                                <td id="porcentaje_susp_programada"></td>
+                                <td id="cantidad_susp_programada"></td>
+                            </tr>
+                            <tr>
+                                <td>Suspensión Efectiva</td>
+                                <td id="porcentaje_susp_efectiva"></td>
+                                <td id="cantidad_susp_efectiva"></td>
+                            </tr>
+                            <tr>
+                                <td>Circuito</td>
+                                <td id="porcentaje_circuito"></td>
+                                <td id="cantidad_circuito"></td>
+                            </tr>
+                            <tr>
+                                <td>Daño</td>
+                                <td id="porcentaje_dano"></td>
+                                <td id="cantidad_dano"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="mid-graph">
+                        <canvas id="resultados"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-panel uso">
+                <h5>Uso vía web</h5>
+
+                <div class="container-uso">
+                    <div class="ingreso">
+                        <span class="titulo">
+                            <i class="left medium material-icons">flight_land</i>Ingresos:</span>
+                        <span id="cantidadIngreso" class="respuesta"></span>
+                    </div>
+                    <div class="salida">
+                        <span class="titulo">
+                            <i class="left medium material-icons">flight_takeoff</i>Salidas:</span>
+                        <span id="cantidadSalida" class="respuesta"></span>
+                    </div>
+                </div>
+
+            </div>
         </div>
+        <div class="vertical-container">
+            <div class="card-panel criterio">
+                <h5>Criterio Búsqueda</h5>
+                <div class="flex-container">
+                    <table class="responsive-table highlight">
+                        <thead>
+                            <tr>
+                                <th data-field="id">Nombre</th>
+                                <th data-field="name">Porcentaje</th>
+                                <th data-field="price">Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>NIU</td>
+                                <td id="porcentaje_niu"></td>
+                                <td id="cantidad_niu"></td>
+                            </tr>
+                            <tr>
+                                <td>Dirección</td>
+                                <td id="porcentaje_direccion"></td>
+                                <td id="cantidad_direccion"></td>
+                            </tr>
+                            <tr>
+                                <td>C.C.</td>
+                                <td id="porcentaje_cc"></td>
+                                <td id="cantidad_cc"></td>
+                            </tr>
+                            <tr>
+                                <td>Nombre</td>
+                                <td id="porcentaje_nombre"></td>
+                                <td id="cantidad_nombre"></td>
+                            </tr>
+                            <tr>
+                                <td>NIT</td>
+                                <td id="porcentaje_nit"></td>
+                                <td id="cantidad_nit"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="criterioBusqueda"></div>
+
+                </div>
+            </div>
+            <div class="card-panel calificacion">
+                <h5>Calificaciones</h5>
+                <div class="container-calificacion">
+                    <div class="excelente">
+                        <span class="titulo">
+                            <i class="left small material-icons">sentiment_very_satisfied</i>Excelente:</span>
+                        <span id="excelente" class="respuesta"></span>
+                    </div>
+                    <div class="bueno">
+                        <span class="titulo">
+                            <i class="left small material-icons">sentiment_satisfied</i>Bueno:</span>
+                        <span id="bueno" class="respuesta"></span>
+                    </div>
+                    <div class="regular">
+                        <span class="titulo">
+                            <i class="left small material-icons">sentiment_dissatisfied</i>Regular:</span>
+                        <span id="regular" class="respuesta"></span>
+                    </div>
+                    <div class="malo">
+                        <span class="titulo">
+                            <i class="left small material-icons">sentiment_very_dissatisfied</i>Malo:</span>
+                        <span id="malo" class="respuesta"></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
         <!-- <div class="card-panel">
             <h5>Gráfico Uso vía web</h5>
             <div class="">
@@ -203,11 +237,11 @@
             </div>
         </div> -->
         <div class="card-panel">
-            <h5>Gráfico uso por día</h5>
+            <h5>Acumulado de peticiones por día</h5>
             <canvas id="usoPorDia"></canvas>
         </div>
         <div class="card-panel">
-            <h5>Gráfico Promedio hora</h5>
+            <h5>Acumulado de peticiones por hora</h5>
             <canvas id="usoPorHora"></canvas>
         </div>
     </div>
@@ -225,11 +259,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script src="js/busqueda.js" type="module"></script>
-<script src="js/resultado.js"></script>
+<script src="js/resultado.js" type="module"></script>
 <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-<script src="js/criterio_busqueda.js"></script>
+<script src="js/criterio_busqueda.js" type="module"></script>
 <script src="js/uso_por_dia.js" type="module"></script>
-<script src="js/uso_por_hora.js"></script>
+<script src="js/uso_por_hora.js" type="module"></script>
 <script src="js/monitoreo.js" type="module"></script>
 
 

@@ -27,13 +27,89 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 3em;
+    margin: 2.5em;
+    margin-top: 0.4em;
+}
+
+.vertical-container{
+    display: flex;
+    width: 49%;
+    flex-flow: column nowrap;
 }
 
 .card-panel {
     padding: 0.8em;
-    width: 49%
+    font-size: 0.9em;
+    margin-bottom: 0.2em;
+    width: 49%;
 }
+
+.card-panel.busquedas, .card-panel.resultados, .card-panel.uso, .card-panel.criterio, .card-panel.calificacion{
+    width: 100%;
+}
+
+.busquedas table, .resultados table{
+    width: 62%;
+}
+.criterio table{
+    width: 40%;
+}
+.busquedas .small-graph{
+    width: 30%;
+}
+.resultados .mid-graph{
+    width: 24%;
+}
+.uso .container-uso{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    font-size: 2.5em;
+}
+.calificacion .container-calificacion{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    font-size: 1.7em;
+}
+.uso .ingreso{
+    color: #107a1e;
+}
+.uso .salida{
+    color: #dbba00;
+}
+.excelente{
+    color: #107a1e;
+}
+.bueno{
+    color: #107a7a;
+}
+.regular{
+    color: #dbba00;
+}
+.malo{
+    color: #a5220b;
+}
+
+.flex-container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex-container table td[id], .flex-container table th.centered{
+    text-align: center !important;
+}
+
+.busquedas .flex-container{
+    margin-top: -2em;
+}
+.resultados .flex-container{
+    padding-right: 1.3em;
+}
+
+
+
 
 h5 {
     margin-top: 0.1em;
