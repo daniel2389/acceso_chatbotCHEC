@@ -161,7 +161,7 @@ function filterIngresoPorDia($con)
                 '$sort' => ["_id" => 1]
             ]
         ],
-        'cursor' => 'stdClass'
+        'cursor' => new stdClass
     ]);
     $result = $con->executeCommand($GLOBALS['dbname'], $Command);
     $respuesta = current($result->toArray());
