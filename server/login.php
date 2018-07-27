@@ -15,6 +15,8 @@ if (isset($usr, $pwd)) {
         $api->setLogin($json['idusuario']);
         session_start();
         $_SESSION['idusuario'] = $json['idusuario'];
+    }else {
+        $json = $bdResponse;
     }
 }
 
