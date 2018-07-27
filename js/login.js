@@ -23,7 +23,7 @@ $(document).ready(function () {
                     $('#formularioIngreso').show();
 
                 }, 1000);
-                if (response.length == 0) {
+                if (!response) {
                     swal({
                         title: '¡Ups!',
                         text: 'Las credenciales ingresadas no son las correctas, por favor intenta de nuevo.',
@@ -33,16 +33,16 @@ $(document).ready(function () {
                         closeOnConfirm: false
                     }, );
                 } else {
-                    if (response[0].tipo_usuario == "monitoreo") {
-                        var nombre = response[0].nombre
+                    if (response.tipo_usuario == "monitoreo") {
+                        var nombre = response.nombre
                         localStorage.setItem('nombre', nombre)
-                        var idusuario = response[0].idusuario
+                        var idusuario = response.idusuario
                         localStorage.setItem('idusuario', idusuario)
                         window.location.href = "monitoreo.html"
                     } else {
-                        var idusuario = response[0].nombre
+                        var idusuario = response.nombre
                         localStorage.setItem('nombre', nombre)
-                        var idusuario = response[0].idusuario
+                        var idusuario = response.idusuario
                         localStorage.setItem('idusuario', idusuario)
                         window.location.href = "bot.html"
                     }

@@ -11,24 +11,10 @@ class ChatbotApi
 
     public function __construct()
     {
-        $this->connectDBpostgres();
         $this->connectDBmongo();
     }
 
-    public function connectDBpostgres()
-    {
-        //DB DATA
-        $database = "d7jmsqb0pb9n11";
-        $uid = "ymuglgckigeyxm";
-        $pwd = "8a86f637e663ed9f778e1ec74e3da85d6f6aec7ce57dbbd2cf3c5c82afa3380a";
-        $host = "ec2-184-73-201-79.compute-1.amazonaws.com";
 
-        //establecer la conexión
-        $this->conPostgres = new PDO("pgsql:host=$host;port=5432;dbname=$database;user=$uid;password=$pwd");
-        if (!$this->conPostgres) {
-            die('error de conexión');
-        }
-    }
 
     public function connectDBmongo()
     {
@@ -46,7 +32,7 @@ class ChatbotApi
 
     public function login($usr, $pwd)
     {
-        return logQuery($this->conPostgres, $usr, $pwd);
+        return logQuery($this->conMongo, $usr, $pwd);
     }
 
     //----------------------------INSERTS DE LOG PARA MONITOREO------------------------------------

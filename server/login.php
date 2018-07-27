@@ -7,12 +7,14 @@ $usr = $_POST['user'];
 $pwd = $_POST['pwd'];
 
 if (isset($usr, $pwd)) {
-    $json = $api->login($usr, $pwd);
-
-    if (sizeof($json) != 0) {
-        $api->setLogin($json[0]['idusuario']);
+    $bdResponse = $api->login($usr, $pwd);
+    if ($bdResponse) {
+        $json['idusuario'] = $bdResponse->IDUSUARIO;
+        $json['nombre'] = $bdResponse->NOMBRE;
+        $json['tipo_usuario'] = $bdResponse->TIPO_USUARIO;
+        $api->setLogin($json['idusuario']);
         session_start();
-        $_SESSION['idusuario'] = $json[0]['idusuario'];
+        $_SESSION['idusuario'] = $json['idusuario'];
     }
 }
 
