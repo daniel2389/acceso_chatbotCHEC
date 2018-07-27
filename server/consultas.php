@@ -105,7 +105,8 @@ function filterUsoWeb($con, $tipo_acceso, $fechainicio, $fechafin)
 
     $filter = [
         'FECHA' => ['$gte' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechainicio)), '$lt' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechafin))],
-        'TIPO_ACCESO' => $tipo_acceso
+        'TIPO_ACCESO' => $tipo_acceso,
+        'USUARIO' => ['$ne' => 1]
     ];
     $Command = new MongoDB\Driver\Command(["count" => "log_acceso_web", "query" => $filter]);
     $result = $con->executeCommand($GLOBALS['dbname'], $Command);
