@@ -137,7 +137,7 @@ function filterIngresoPorHora($con)
         'cursor' => new stdClass
     ]);
     $result = $con->executeCommand($GLOBALS['dbname'], $Command);
-    $respuesta = current($result->toArray());
+    $respuesta = $result->toArray();
     return $respuesta;
 }
 
@@ -164,7 +164,7 @@ function filterIngresoPorDia($con)
         'cursor' => new stdClass
     ]);
     $result = $con->executeCommand($GLOBALS['dbname'], $Command);
-    $respuesta = current($result->toArray());
+    $respuesta = $result->toArray();
     return $respuesta;
 
 }

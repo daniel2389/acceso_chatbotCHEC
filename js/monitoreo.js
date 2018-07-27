@@ -165,8 +165,8 @@ function cargarFijos() {
         url: "server/ingreso_dia.php",
         dataType: "json",
         success: function (response) {
-            initIngresoPorDia(response.dia.result);
-            initIngresoHora(response.hora.result);
+            initIngresoPorDia(response.dia);
+            initIngresoHora(response.hora);
         }
     });
 }
