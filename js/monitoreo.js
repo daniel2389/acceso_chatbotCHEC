@@ -40,7 +40,7 @@ $(function () {
 
     function cb(start, end) {
         $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        cargarDatos(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD'));
+        cargarDatos(start.format('YYYY-MM-DD HH:mm'), end.format('YYYY-MM-DD HH:mm'));
     }
 
     $('#reportrange').daterangepicker({
