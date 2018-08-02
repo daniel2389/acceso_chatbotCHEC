@@ -8,14 +8,15 @@ body {
 
 #imagenCHEC {
     width: 9%;
-    margin-left: 0.3em;
+    margin-left: 0.5em;
+    margin-top: 0.5em;
 }
 
 #imagenCIAD {
     width: 3.5%
 }
 
-.brand-logo{
+.brand-logo {
     margin-left: 0.3em;
 }
 
@@ -31,7 +32,7 @@ main {
     margin-top: 0.4em;
 }
 
-.vertical-container{
+.vertical-container {
     display: flex;
     width: 49%;
     flex-flow: column nowrap;
@@ -44,72 +45,88 @@ main {
     width: 49%;
 }
 
-.card-panel.busquedas, .card-panel.resultados, .card-panel.uso, .card-panel.criterio, .card-panel.calificacion{
+.card-panel.busquedas,
+.card-panel.resultados,
+.card-panel.uso,
+.card-panel.criterio,
+.card-panel.calificacion {
     width: 100%;
 }
 
-.busquedas table, .resultados table{
+.busquedas table,
+.resultados table {
     width: 62%;
 }
-.criterio table{
+
+.criterio table {
     width: 40%;
 }
-.busquedas .small-graph{
+
+.busquedas .small-graph {
     width: 30%;
 }
-.resultados .mid-graph{
+
+.resultados .mid-graph {
     width: 24%;
 }
-.uso .container-uso{
+
+.uso .container-uso {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
     font-size: 2.5em;
 }
-.calificacion .container-calificacion{
+
+.calificacion .container-calificacion {
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
     font-size: 1.7em;
 }
-.uso .ingreso{
+
+.uso .ingreso {
     color: #107a1e;
 }
-.uso .salida{
+
+.uso .salida {
     color: #dbba00;
 }
-.excelente{
+
+.excelente {
     color: #107a1e;
 }
-.bueno{
+
+.bueno {
     color: #107a7a;
 }
-.regular{
+
+.regular {
     color: #dbba00;
 }
-.malo{
+
+.malo {
     color: #a5220b;
 }
 
-.flex-container{
+.flex-container {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
 }
-.flex-container table td[id], .flex-container table th.centered{
+
+.flex-container table td[id],
+.flex-container table th.centered {
     text-align: center !important;
 }
 
-.busquedas .flex-container{
+.busquedas .flex-container {
     margin-top: -2em;
 }
-.resultados .flex-container{
+
+.resultados .flex-container {
     padding-right: 1.3em;
 }
-
-
-
 
 h5 {
     margin-top: 0.1em;
@@ -143,3 +160,4 @@ td {
     border: 2px solid #1a1717;
     width: 28%
 }
+

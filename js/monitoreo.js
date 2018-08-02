@@ -10,9 +10,13 @@ import {
     initCriterioGraph
 } from "./criterio_busqueda.js";
 
-import { initIngresoHora } from "./uso_por_hora.js";
+import {
+    initIngresoHora
+} from "./uso_por_hora.js";
 
-import {initIngresoPorDia} from './uso_por_dia.js';
+import {
+    initIngresoPorDia
+} from './uso_por_dia.js';
 
 
 
@@ -191,7 +195,7 @@ function llenarTablas(response) {
     // TABLA DE ACCESO WEB
     $('#cantidadIngreso').text(response.res_usoViaWeb.Ingreso.n);
     $('#cantidadSalida').text(response.res_usoViaWeb.Salida.n);
-    //TABLA CALIFICACIONES
+    // TABLA CALIFICACIONES
     $('#excelente').text(response.res_calificaciones.excelente.n);
     $('#bueno').text(response.res_calificaciones.bueno.n);
     $('#regular').text(response.res_calificaciones.regular.n);
@@ -224,13 +228,6 @@ function llenarTablas(response) {
     $('#porcentaje_direccion').text(porcentajesCriterio[3]);
     $('#porcentaje_nit').text(porcentajesCriterio[4]);
     initCriterioGraph(response.res_criterioBusqueda);
-
-    
-
-
-
-
-
 
 }
 

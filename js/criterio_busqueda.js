@@ -95,5 +95,3 @@ export function initCriterioGraph(data) {
         .style("height", diameter + "px");
 
 }
-
-// inicia el grafico de d3
