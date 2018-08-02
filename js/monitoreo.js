@@ -44,7 +44,7 @@ $(function () {
 
     function cb(start, end) {
         $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-        cargarDatos(start._d.toString(), end._d.toString());
+        cargarDatos(start.format('YYYY-MM-DD HH:mm'), end.format('YYYY-MM-DD HH:mm'));
     }
 
     $('#reportrange').daterangepicker({
@@ -149,7 +149,6 @@ function cargarDatos(fechainicio, fechafin) {
         fechaInicio: fechainicio,
         fechaFin: fechafin
     }
-
     $.ajax({
         type: "post",
         url: "server/graph.php",
@@ -169,8 +168,8 @@ function cargarFijos() {
         url: "server/ingreso_dia.php",
         dataType: "json",
         success: function (response) {
-            initIngresoPorDia(response.dia.result);
-            initIngresoHora(response.hora.result);
+            initIngresoPorDia(response.dia);
+            initIngresoHora(response.hora);
         }
     });
 }
@@ -200,7 +199,6 @@ function llenarTablas(response) {
     $('#bueno').text(response.res_calificaciones.bueno.n);
     $('#regular').text(response.res_calificaciones.regular.n);
     $('#malo').text(response.res_calificaciones.malo.n);
-    console.log(response.res_calificaciones);
 
     // creacion porcentajes Busquedas
     let porcentajesBusqueda = getPorcentaje([response.res_busqueda.c1.n, response.res_busqueda.c2.n]);

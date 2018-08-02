@@ -17,8 +17,11 @@ function executeQuery($con, $sql)
 
 function logQuery($con, $usr, $pwd)
 {
-    $sql = "select idusuario, nombre, tipo_usuario from usuario_chatbot where email = '$usr' and contrasena = '$pwd'";
-    return executeQuery($con, $sql);
+    $filter = ['USUARIO' => $usr, 'CONTRASENA' => $pwd];
+    $query = new MongoDB\Driver\Query($filter);
+    $result = $con->executeQuery($GLOBALS['dbname'] . ".usuarios_portalweb", $query);
+    $cliente = current($result->toArray());
+    return $cliente;
 }
 
 function insertLogAcceso($con, $usuario, $tipo_acceso)
@@ -59,7 +62,11 @@ function filterBusqueda($con, $contexto, $fechainicio, $fechafin)
         'FECHA_BUSQUEDA' => ['$gte' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechainicio)), '$lt' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechafin))],
         'CONTEXTO' => $contexto
     ];
-    $Command = new MongoDB\Driver\Command(["count" => "log_busqueda", "query" => $filter]);
+    $Command = new MongoDB\Driver\Command([
+        "count" => "log_busqueda",
+        "query" => $filter,
+        "cursor" => "stdClass"
+    ]);
     $result = $con->executeCommand($GLOBALS['dbname'], $Command);
     $respuesta = current($result->toArray());
     return $respuesta;
@@ -77,7 +84,11 @@ function filterCriterioBusqueda($con, $criterio, $fechainicio, $fechafin)
         'FECHA_BUSQUEDA' => ['$gte' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechainicio)), '$lt' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechafin))],
         'CRITERIO' => $criterio
     ];
-    $Command = new MongoDB\Driver\Command(["count" => "log_busqueda", "query" => $filter]);
+    $Command = new MongoDB\Driver\Command([
+        "count" => "log_busqueda",
+        "query" => $filter,
+        "cursor" => "stdClass"
+    ]);
     $result = $con->executeCommand($GLOBALS['dbname'], $Command);
     $respuesta = current($result->toArray());
     return $respuesta;
@@ -94,7 +105,8 @@ function filterUsoWeb($con, $tipo_acceso, $fechainicio, $fechafin)
 
     $filter = [
         'FECHA' => ['$gte' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechainicio)), '$lt' => new \MongoDB\BSON\UTCDateTime(new \DateTime($fechafin))],
-        'TIPO_ACCESO' => $tipo_acceso
+        'TIPO_ACCESO' => $tipo_acceso,
+        'USUARIO' => ['$ne' => '1']
     ];
     $Command = new MongoDB\Driver\Command(["count" => "log_acceso_web", "query" => $filter]);
     $result = $con->executeCommand($GLOBALS['dbname'], $Command);
@@ -121,10 +133,11 @@ function filterIngresoPorHora($con)
             [
                 '$sort' => ["_id" => 1]
             ]
-        ]
+        ],
+        'cursor' => new stdClass
     ]);
     $result = $con->executeCommand($GLOBALS['dbname'], $Command);
-    $respuesta = current($result->toArray());
+    $respuesta = $result->toArray();
     return $respuesta;
 }
 
@@ -147,10 +160,11 @@ function filterIngresoPorDia($con)
             [
                 '$sort' => ["_id" => 1]
             ]
-        ]
+        ],
+        'cursor' => new stdClass
     ]);
     $result = $con->executeCommand($GLOBALS['dbname'], $Command);
-    $respuesta = current($result->toArray());
+    $respuesta = $result->toArray();
     return $respuesta;
 
 }
